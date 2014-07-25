@@ -9,7 +9,18 @@ public class ReadXmlFile {
 	public static Element getNextElement(Element baseElement, String tagName){
 		NodeList tempNodeList = baseElement.getElementsByTagName(tagName);
 		Element tempElement = (Element)tempNodeList.item(0);
+		
 		return tempElement;
+	}
+	
+	public static Element getNextElement(Element baseElement, String[] tagNames){
+		
+		for(String tagName: tagNames){
+			NodeList tempNodeList = baseElement.getElementsByTagName(tagName);
+			baseElement = (Element)tempNodeList.item(0);
+		}
+		
+		return baseElement;
 	}
 
 	public static void main(String[] args) {
@@ -24,18 +35,19 @@ public class ReadXmlFile {
 			
 			Element stItemElement = (Element) tempNode;
 			//Statement Code
-			Element statementCodesListElement = getNextElement(stItemElement, "StatementCodes");
-			Element statementCodeListElement = getNextElement(statementCodesListElement, "StatementCode");
-			System.out.println(statementCodeListElement.getTextContent());
-			
-			//Description Codes\
-			Element statementsListElement =  getNextElement(stItemElement,"Statements");
-			Element statementListElement =  getNextElement(statementsListElement,"Statement");
-			System.out.println(statementListElement.getTextContent());
+			String[] statementCodes = {"StatementCodes","StatementCode"};
+			Element statementCode = getNextElement(stItemElement, statementCodes);
+			System.out.println(statementCode.getTextContent());
+					
+			//Description Codes
+			String[] statements = {"Statements","Statement"};
+			Element statement = getNextElement(stItemElement, statements);
+			System.out.println(statement.getTextContent());
 			
 			//RefURI
-			Element refURIElement =  getNextElement(stItemElement,"RefURI");
-			System.out.println(refURIElement.getTextContent());
+			String[] referrals = {"RefURI"};
+			Element refURI = getNextElement(stItemElement, referrals);
+			System.out.println(refURI.getTextContent());
 			
 			
 		}

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFiles {
+public class FileFinder {
 	
 	// find all files in the folder that end with .xml
 	public List<File> findFilenames(){
@@ -19,19 +19,9 @@ public class ReadFiles {
 			}
 			
 		}
-		for(File temp: filteredList){
-			System.out.println(temp.getName());
-		}
-		
 		
 		return filteredList;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ReadFiles rmf = new ReadFiles();
-		rmf.findFilenames();
-
-	}
 
 }

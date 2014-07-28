@@ -27,6 +27,7 @@ public class StandardsProcessor {
 
 			hm.addAll(new SaxParser().parseXML(file));
 		}
+		System.out.println("There are " + hm.size() + " entries.");
 
 		System.out.println("Searching for YouTube links...");
 		hm = new YouTubeSearcher().runSearch(hm);

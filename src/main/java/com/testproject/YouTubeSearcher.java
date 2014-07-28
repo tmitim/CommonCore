@@ -94,6 +94,10 @@ public class YouTubeSearcher {
 					+ PROPERTIES_FILENAME + ": " + e.getCause() + " : "
 					+ e.getMessage());
 			System.exit(1);
+		} catch (NullPointerException e){
+			System.out.println("YouTube apikey in publickey.properties is probably missing from root.");
+			System.out.println("Exiting program.");
+			System.exit(1);
 		}
 
 		try {
@@ -124,7 +128,7 @@ public class YouTubeSearcher {
 			 * This method reduces the info returned to only the fields we need
 			 * and makes calls more efficient.
 			 */
-			search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+			search.setFields("items(id/kind,id/videoId)");
 			search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
 
 			SearchListResponse searchResponse = search.execute();
@@ -162,8 +166,6 @@ public class YouTubeSearcher {
 			SearchResult singleVideo = iteratorSearchResults.next();
 			ResourceId rId = singleVideo.getId();
 
-			// Double checks the kind is video.
-			// System.out.println(singleVideo.getId());
 			if (rId.getKind().equals("youtube#video")) {
 				tempList.add(rId.getVideoId());
 			}

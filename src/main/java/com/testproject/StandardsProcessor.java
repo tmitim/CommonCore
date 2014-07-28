@@ -1,4 +1,9 @@
-// 
+/* 	
+ * 	Main Class - Edlio Test Project
+ * 	Finds files, Parses them using SAX, Uses Youtube API, then prints findings
+ * 	Timothy Myung
+ * 
+ * */
 
 package com.testproject;
 
@@ -27,7 +32,7 @@ public class StandardsProcessor {
 		System.out.println("Printing results...");
 		new CodePrinter().print(hm);
 
-		System.out.println("Completed printing.");
+		System.out.println("Completed. (" + hm.size() + " entries)");
 
 	}
 

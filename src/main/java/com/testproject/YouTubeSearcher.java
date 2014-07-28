@@ -72,7 +72,7 @@ public class YouTubeSearcher {
 			temp.setUrl(getLinks(searchTerm));
 			tempHm.add(temp);
 			count++;
-			if (count % 50 == 0){
+			if (count % 25 == 0){
 				System.out.println("Working on item #" + count);
 			}
 		}

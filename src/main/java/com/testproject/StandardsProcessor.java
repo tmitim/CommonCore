@@ -15,8 +15,10 @@ import com.google.common.collect.HashMultiset;
 public class StandardsProcessor {
 	public void runProgram() {
 
+		System.out.println("XML Parser and Searcher");
 		System.out.println("Finding Files...");
 		List<File> files = new FileFinder().findFilenames();
+		System.out.println("... found " + files.size());
 
 		System.out.println("Parsing files...");
 		HashMultiset<CoreStandard> hm = HashMultiset.create();
@@ -29,7 +31,7 @@ public class StandardsProcessor {
 		System.out.println("Searching for YouTube links...");
 		hm = new YouTubeSearcher().runSearch(hm);
 
-		System.out.println("Printing results...");
+		System.out.println("\nPrinting results...");
 		new CodePrinter().print(hm);
 
 		System.out.println("Completed. (" + hm.size() + " entries)");
